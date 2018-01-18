@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Routing\Router;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,7 +12,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+define('STATIC_BASE_URL',  URL::to('/').'/');
 
-Route::get('/', function () {
-    return view('home');
-});
+
+Route::get("/","IndexController@index");
