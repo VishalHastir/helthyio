@@ -246,6 +246,7 @@ class Admin
                 $router->resource('auth/permissions', 'PermissionController');
                 $router->resource('auth/menu', 'MenuController', ['except' => ['create']]);
                 $router->resource('auth/logs', 'LogController', ['only' => ['index', 'destroy']]);
+                $router->resource('auth/products', 'ProductsController');
             });
 
             $router->get('auth/login', 'AuthController@getLogin');

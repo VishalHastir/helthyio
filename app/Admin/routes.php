@@ -9,7 +9,7 @@ Route::group([
     'namespace'     => config('admin.route.namespace'),
     'middleware'    => config('admin.route.middleware'),
 ], function (Router $router) {
-
+    
     $router->get('/', 'HomeController@index');
 
     $router->resources([
@@ -36,6 +36,7 @@ Route::group([
         'china/province'        => China\ProvinceController::class,
         'china/city'            => China\CityController::class,
         'china/district'        => China\DistrictController::class,
+        'products'              => ProductsController::class,
     ]);
 
     $router->post('posts/release', 'PostController@release');
