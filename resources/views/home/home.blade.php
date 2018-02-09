@@ -1647,26 +1647,85 @@
             </div>
             <div class="col-md-12 diet-questions">
               <div class="select-gender col-md-6">
+                <h2>Select Gender</h2>
                   <span><input type="radio" name="gender-radio" value="1" class="gender-radio"><label>Male </label></span>
                   <span><input type="radio" name="gender-radio" value="0" class="gender-radio"><label>Female</label></span>
+                  <button class="back-button">Back</button>
               </div>
+
               <div class="physical-activity col-md-6 hidden">
-                Physcial Activity
+                <h2>Physcial Activity</h2>
+                <ul>
+                  @foreach ($activityData as $val)
+                    <li><input type="radio" name = "activity-radio" value="{{$val->id}}" class="activity-radio"><label>{{ $val->type }}</label></li>
+                  @endforeach
+                </ul>
+                <button class="back-button">Back</button>
               </div>
+
               <div class="meat col-md-6 hidden">
-                Meat
+                <h2>Meat Prefrence</h2>
+                <ul>
+                  @foreach ($meatData as $val)
+                    <li><label>{{$val->name}}</label> 
+                      <input type="checkbox" name="include-meat-checkbox" value="{{$val->id}}" class="include-meat-checkbox" checked="true"> 
+                      <input type="checkbox" name="exclude-meat-checkbox" value="{{$val->id}}" class="exclude-meat-checkbox">
+                    </li>
+                  @endforeach
+              </ul>
+              <button class="back-button">Back</button>
+              <button id="meat-continue" class="">Continue</button>
               </div>
+
               <div class="col-md-6 veggies hidden">
-                Veggies
+                <h2>Veggies</h2>
+                <ul>
+                  @foreach ($veggiesData as $val)
+                    <li><label>{{$val->name}}</label> 
+                      <input type="checkbox" name="include-veggies-checkbox" value="{{$val->id}}" class="include-veggies-checkbox" checked="true"> 
+                      <input type="checkbox" name="exclude-veggies-checkbox" value="{{$val->id}}" class="exclude-veggies-checkbox">
+                    </li>
+                  @endforeach
+              </ul>
+              <button class="back-button">Back</button>
+              <button id="veggies-continue" class="">Continue</button>
               </div>
               <div class="col-md-6 fruits hidden">
-                Fruits
+                <h2>Fruits</h2>
+                <ul>
+                  @foreach ($fruitsData as $val)
+                    <li><label>{{$val->name}}</label> 
+                      <input type="checkbox" name="include-fruits-checkbox" value="{{$val->id}}" class="include-fruits-checkbox" checked="true"> 
+                      <input type="checkbox" name="exclude-fruits-checkbox" value="{{$val->id}}" class="exclude-fruits-checkbox">
+                    </li>
+                  @endforeach
+              </ul>
+              <button class="back-button">Back</button>
+              <button id="fruits-continue" class="">Continue</button>
               </div>
               <div class="col-md-6 products hidden">
-                Products
+                <h2>Products</h2>
+                <ul>
+                  @foreach ($productsData as $val)
+                    <li><label>{{$val->name}}</label> 
+                      <input type="checkbox" name="include-products-checkbox" value="{{$val->id}}" class="include-products-checkbox" checked="true"> 
+                      <input type="checkbox" name="exclude-products-checkbox" value="{{$val->id}}" class="exclude-products-checkbox">
+                    </li>
+                  @endforeach
+              </ul>
+              <button class="back-button">Back</button>
+              <button id="products-continue" class="">Continue</button>
               </div>
               <div class="col-md-6 everyday hidden">
-                Everyday
+                <h2>Everyday</h2>
+                <ul>
+                  @foreach ($dailyRoutineData as $val)
+                    <li><label>{{$val->name}}</label> 
+                      <li><input type="radio" name = "routine-radio" value="{{$val->id}}" class="routine-radio"><label>{{ $val->type }}</label></li>
+                    </li>
+                  @endforeach
+              </ul>
+              <button class="back-button">Back</button>
               </div>
               <div class="col-md-6 bad habits hidden">
                 Bad Habits

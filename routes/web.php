@@ -14,5 +14,12 @@ use Illuminate\Routing\Router;
 */
 define('STATIC_BASE_URL',  URL::to('/').'/');
 
+//Constant for Diet Categories
+define('FRUITS',  1);
+define('VEGETABLES',  2);
+define('FOODS',  3);
+define('MEAT',  4);
+define('PRODUCT',  5);
+
 
 Route::get("/","IndexController@index");
