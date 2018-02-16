@@ -1,12 +1,26 @@
 
 $(document).ready(function(){
-	$(".gender-radio").on("click",function(){
+	$(".eating-pref").on("click",function(){
 		//cookie code here
-		var val = $('input:radio[name=gender-radio]:checked').val();
-		saveToCookie("gender",val);
+		var val = $('input:radio[name=eating-pref]:checked').val();
+		saveToCookie("eating-pref",val);
 
 		//show next element code
-		showNextDietQuestionModule("select-gender");
+		showNextDietQuestionModule("eating-prefrences");
+	});
+	$("#stats-continue").on("click",function(){
+		//cookie code here
+		var dataArray = [];
+		dataArray.push($('input:radio[name=gender-radio]:checked').val());
+		dataArray.push($('#weight').val());
+		dataArray.push($('#height').val());
+		dataArray.push($('#age').val());
+		dataArray.push($('#fat').val());
+		
+		saveToCookie("statsData",dataArray);
+
+		//show next element code
+		showNextDietQuestionModule("personal-stats");
 	});
 
 	$(".activity-radio").on("click",function(){
@@ -88,7 +102,12 @@ function saveToCookie(key,value){
 
 function showNextDietQuestionModule(className){
 	$("."+className).addClass("hidden");
-    $("."+className).nextAll("div").eq(0).removeClass("hidden");
+	if(JSON.parse(localStorage.getItem("eating-pref")) != 2 && className == "products"){
+		$("."+className).nextAll("div").eq(1).removeClass("hidden");
+	}else{
+		$("."+className).nextAll("div").eq(0).removeClass("hidden");
+	}
+    
 }
 
 function showPreviousDietQuestionModule(){

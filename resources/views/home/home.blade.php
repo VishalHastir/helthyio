@@ -1646,37 +1646,33 @@
               <p class="text-uppercase letter-space-4">Join our Health Zone and be healthy.</p>
             </div>
             <div class="col-md-12 diet-questions">
-              <div class="select-gender col-md-6">
-                <h2>Select Gender</h2>
+              <div class="personal-stats col-md-6">
+                <h2>Personal Stats</h2>
+                <label>Select Gender</label>
+                <div>
                   <span><input type="radio" name="gender-radio" value="1" class="gender-radio"><label>Male </label></span>
                   <span><input type="radio" name="gender-radio" value="0" class="gender-radio"><label>Female</label></span>
-                  <button class="back-button">Back</button>
+                </div>
+                <div><label>Weight</label><input type="text" id="weight"></div>
+                <div><label>Height</label><input type="text" id="height"></div>
+                <div>
+                  <span><label>Foot</label><input type="text" id="foot"></span>
+                  <span><label>Inch</label><input type="text" id="inch"></span>
+                </div>
+                <div><label>Age</label><input type="text" id="age"></div>
+                <div><label>Fat %</label><input type="text" id="fat" value=""></div>
+                  
+                <button id="stats-continue" class="">Continue</button>
               </div>
-
-              <div class="physical-activity col-md-6 hidden">
-                <h2>Physcial Activity</h2>
+              <div class="col-md-6 eating-prefrences hidden">
+                <h2>Eating Preferences</h2>
                 <ul>
-                  @foreach ($activityData as $val)
-                    <li><input type="radio" name = "activity-radio" value="{{$val->id}}" class="activity-radio"><label>{{ $val->type }}</label></li>
-                  @endforeach
+                 <li><input type="radio" name="eating-pref" class="eating-pref" id="veg" value="1"><label>Vegetarian</label></li>
+                 <li><input type="radio" name="eating-pref" class="eating-pref" id="egg" value="2"><label>Eggetarian</label></li>
+                 <li><input type="radio" name="eating-pref" class="eating-pref" id="non-veg" value="3"><label> Non-Vegetarian</label></li>
                 </ul>
-                <button class="back-button">Back</button>
-              </div>
-
-              <div class="meat col-md-6 hidden">
-                <h2>Meat Prefrence</h2>
-                <ul>
-                  @foreach ($meatData as $val)
-                    <li><label>{{$val->name}}</label> 
-                      <input type="checkbox" name="include-meat-checkbox" value="{{$val->id}}" class="include-meat-checkbox" checked="true"> 
-                      <input type="checkbox" name="exclude-meat-checkbox" value="{{$val->id}}" class="exclude-meat-checkbox">
-                    </li>
-                  @endforeach
-              </ul>
               <button class="back-button">Back</button>
-              <button id="meat-continue" class="">Continue</button>
               </div>
-
               <div class="col-md-6 veggies hidden">
                 <h2>Veggies</h2>
                 <ul>
@@ -1704,7 +1700,7 @@
               <button id="fruits-continue" class="">Continue</button>
               </div>
               <div class="col-md-6 products hidden">
-                <h2>Products</h2>
+                <h2>Foods</h2>
                 <ul>
                   @foreach ($productsData as $val)
                     <li><label>{{$val->name}}</label> 
@@ -1716,39 +1712,39 @@
               <button class="back-button">Back</button>
               <button id="products-continue" class="">Continue</button>
               </div>
-              <div class="col-md-6 everyday hidden">
-                <h2>Everyday</h2>
+
+              <div class="meat col-md-6 hidden">
+                <h2> Non Veg</h2>
                 <ul>
-                  @foreach ($dailyRoutineData as $val)
+                  @foreach ($meatData as $val)
                     <li><label>{{$val->name}}</label> 
-                      <li><input type="radio" name = "routine-radio" value="{{$val->id}}" class="routine-radio"><label>{{ $val->type }}</label></li>
+                      <input type="checkbox" name="include-meat-checkbox" value="{{$val->id}}" class="include-meat-checkbox" checked="true"> 
+                      <input type="checkbox" name="exclude-meat-checkbox" value="{{$val->id}}" class="exclude-meat-checkbox">
                     </li>
                   @endforeach
               </ul>
               <button class="back-button">Back</button>
+              <button id="meat-continue" class="">Continue</button>
               </div>
-              <div class="col-md-6 bad habits hidden">
-                Bad Habits
-              </div>
-              <div class="col-md-6 meals-per-day hidden">
-                Meals per day
-              </div>
-              <div class="col-md-6 measurements hidden">
-                Measurements
+
+              <div class="physical-activity col-md-6 hidden">
+                <h2>Physcial Activity</h2>
+                <ul>
+                  @foreach ($activityData as $val)
+                    <li><input type="radio" name = "activity-radio" value="{{$val->id}}" class="activity-radio"><label>{{ $val->type }}</label></li>
+                  @endforeach
+                </ul>
+                <button class="back-button">Back</button>
               </div>
                 <div class="col-md-4 progressHolder" style="float:right">
                   <div class="steps clearfix">
                       <div>
-                          <div><span>Your gender</span></div>
+                          <div><span>Personal Stats</span></div>
                           <div></div>
                       </div>
 
                       <div>
-                          <div><span>Physical Activity</span></div>
-                          <div> </div>
-                      </div>
-                      <div>
-                          <div><span>Meat</span></div>
+                          <div><span>Eating Prefrences</span></div>
                           <div> </div>
                       </div>
                       <div>
@@ -1760,24 +1756,16 @@
                           <div> </div>
                       </div>
                       <div>
-                          <div><span>Products</span></div>
+                          <div><span>Foods</span></div>
                           <div> </div>
                       </div>
                       <div>
-                          <div><span>Everyday</span></div>
+                          <div><span>Non Veg</span></div>
                           <div> </div>
                       </div>
                       <div>
-                          <div><span>Bad habits</span></div>
+                          <div><span>Physical Activity</span></div>
                           <div> </div>
-                      </div>
-                      <div>
-                          <div><span>Number of meals per day</span></div>
-                          <div> </div>
-                      </div>
-                      <div>
-                          <div><span>Measurements</span></div>
-                          <div></div>
                       </div>
                   </div>
                 </div>

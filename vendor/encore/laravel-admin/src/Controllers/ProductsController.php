@@ -94,20 +94,21 @@ class ProductsController extends Controller
      */
     public function form()
     {
+        //print_r(Season::all()->pluck('name', 'id'));exit;
         return Products::form(function (Form $form) {
             $form->display('id', 'ID');
 
-            $form->text('name', trans('Name'))->rules('required');
+            $form->text('name', trans('Name'),array('id' => 'product-name'))->rules('required');
             $form->text('indian_name', trans('Indian Name'))->rules('required');
             $form->select('season_id', trans('Season'))->rules('required')->options(Season::all()->pluck('name', 'id'));
             $form->select('diet_category_id', trans('Diet Category'))->rules('required')->options(DietCategory::all()->pluck('name', 'id'));
             $form->text('description', trans('Description'))->rules('required');
             $form->text('details', trans('Details'))->rules('required');
-            $form->text('measurement_type', trans('Measurement Type'))->rules('required');
+            $form->select('measurement_type', trans('Measurement Type'))->rules('required')->options(["1" => "Per 100gm", "2" => "Whole Food"]);
             $form->text('protein', trans('Protein'))->rules('required');
             $form->text('carbs', trans('Carbohydraytes'))->rules('required');
             $form->text('fat', trans('Fats'))->rules('required');
-            $form->text('fibre', trans('Fibre'))->rules('required');
+            $form->text('fibre', trans('Fibre'));
             $form->image('image_name', trans('Image'));
             
 
